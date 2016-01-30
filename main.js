@@ -27,10 +27,13 @@ class Player {
 }
 
 class Unit {
-    constructor(health, attack, movement) {
+    constructor(health, attack, movement, cost) {
         this._health = health;
         this._attack = attack;
         this._movement = movement;
+        this._cost = cost;
+        this._canAttack = true;
+        this._canMove = true;
         this._type = "unit";
     }
     
@@ -45,44 +48,51 @@ class Unit {
     get movement() {
         return this._movement;   
     }
+    
+    get cost() {
+        return this._cost;    
+    }
+    
+    get canAttack() {
+        return this._canAttack;
+    }
+    
+    get canMove() {
+        return this._canMove;    
+    }
     reduceHealth(amount) {
-        this._health -= amount;   
-        if (this._health <= 0) {
-            this.square = undefined; // removes unit from the game    
-        }
+        //this._health -= amount;   
+        //if (this._health <= 0) {
+            //this.square = undefined; 
+        //}
     }
     
     engage(target) {
-        target.reduceHealth(this._attack);
-    }
-    
-    move() {
-        
+        //target.reduceHealth(this._attack);
     }
 }
 
 
 class Intern extends Unit {
     constructor() {
-        super(4, 1, 2);
+        super(4, 1, 2, 200);
         this._name = 'Intern';
-    }
-}
-
-class Manager extends Unit {
-    constructor() {
-        super(4, 1, 2)
-        this._name = 'Manager';
     }
 }
 
 class Programmer extends Unit {
     constructor() {
-        super(4, 1, 2)
+        super(6, 2, 2 400)
         this._name = 'Programmer';
     }
 }
 
+class Manager extends Unit {
+    constructor() {
+        super(8, 3, 3, 600)
+        this._name = 'Manager';
+    }
+}
 
 class Factory {
     constructor(square) {
