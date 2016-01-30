@@ -26,10 +26,13 @@ body {
 }
 
 #unitmenu {
-	display: none;
 	float: left;
 }
 
 #menu {
 	list-style: none;
+}
+
+#menu:hover {
+	cursor: pointer;
 }

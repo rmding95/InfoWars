@@ -1,0 +1,40 @@
+Intern: You gotta start somewhere! (Double damage to Developers)
+(Attack Lines) 
+	“How do you commit to git?”
+	“Do we have to make our fields private?”
+	“What’s a good algorithm to use?”
+	“Style doesn’t really matter”
+	“As long as it works!”
+(Move Lines) 
+	“Can’t wait to code!”
+	“Free swag? Free swag.”
+(Death line)
+	“But I just got this internship!”
+
+Project Manager: Master of repos, Leader of the pack (Double damage toward interns)
+
+(Attack Lines) 
+	“Did you debug your code?”
+	“Why are you on reddit?”
+	“I told you to finish this yesterday!”
+	“Please comment your code”
+	“I gotta finish this report...”
+(Move Lines)
+	“We gotta finish this project now!”
+	“Be Agile! Not heavy!”
+(Death Line):
+	“Not my project!”
+	
+Developer: The rank and file of companies and startups everywhere (Double Damage toward Project Managers)  
+
+(Attack Lines)
+	“Implement this!”
+	“Fast as an O(ln) function.
+	“And I thought my comments were bad…”
+(Move Lines)
+	“Let’s branch out!”
+	“Keep things classy.”
+	“All in the scope of things”
+	
+(Death Line)
+	“Onto another place…”
