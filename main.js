@@ -211,8 +211,8 @@ function adjacent(square) {
 
 function adjacementTest(square, distance) {
     var squares =[];
-    for (var i = 0; i < distance + 1; i++) {
-        for (var j = 0; k < distance - i + 1; j++) {
+    for (var i = 0; i < gridList.length; i++) {
+        for (var j = 0; j < distance - i + 1; j++) {
             if () {
                 squares.push(gridList[j];    
             }
