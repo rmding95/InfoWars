@@ -24,3 +24,12 @@ body {
 	font-size: 14pt;
 	text-align: center;
 }
+
+#unitmenu {
+	display: hidden;
+	float: left;
+}
+
+#menu {
+	list-style: none;
+}
