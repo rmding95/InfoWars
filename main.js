@@ -172,6 +172,8 @@ window.onload = function() {
 			tiles[i].onmouseout = remove;
             tiles[i].onclick = handleClick;
 		}
+    console.log(gridList[6]);
+    console.log(adjacent(gridList[6]));
 }
 
 function makeGrid() {
@@ -208,17 +210,6 @@ function adjacent(square) {
         }
     }
     return squares;
-}
-
-function adjacementTest(square, distance) {
-    var squares =[];
-    for (var i = 0; i < gridList.length; i++) {
-        for (var j = 0; j < distance - i + 1; j++) {
-            if () {
-                squares.push(gridList[j];    
-            }
-        }
-    }
 }
 
 /*
