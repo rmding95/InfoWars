@@ -7,31 +7,39 @@ var emptyLeft = "300px";
 var gridList = [];
 
 class Player {
-    constructor(name, money) {
+    constructor(money, name) {
         this._name = name;
         this._money = money;
         this._units = [];
+    }
+    
+    get money() {
+        return this._money;    
     }
     
     get name() {
         return this._name;   
     }
     
-    get money() {
-        return this._money;    
+    increaseMoney(amount) {
+        this._money += amount;    
     }
 }
 
 class Unit {
-    constructor(health, place, attack) {
+    constructor(health, attack, square) {
         this._health = health;
-        this._place = place;
         this._attack = attack;
+        this._square = square;
     }
     
     get health() {
         return this._health;    
     }  
+    
+    get attack() {
+        return this._attack;    
+    }
     
     reduceHealth(amount) {
         this._health -= amount;   
@@ -39,7 +47,34 @@ class Unit {
             this.square = undefined; // removes unit from the game    
         }
     }
+    
+    engage(target) {
+        target.reduceHealth(this._attack);
+    }
 }
+
+/*
+class Intern extends Unit {
+    constructor() {
+        super(4, 1);
+        this._name = 'Intern';
+    }
+}
+
+class Manager extends Unit {
+    constructor() {
+        super(4, 1)
+        this._name = 'Manager';
+    }
+}
+
+class Programmer extends Unit {
+    constructor() {
+        super(4, 1)
+        this._name = 'Programmer';
+    }
+}
+*/
 
 class Factory {
     constructor(square) {
@@ -60,11 +95,11 @@ class Square {
     }
 
     getX() {
-        return x;
+        return this._x;
     }
 
     getY() {
-        return y;
+        return this._y;
 
     }
 }
@@ -73,6 +108,7 @@ class Game {
     constructor() {
         this._turn = turn;    
     }
+    
     endTurn() {
         
     }
@@ -143,4 +179,43 @@ function populateGrid() {
         console.log(gridList[i].x);
         //if (gridList[i])
     }
+}
+
+    /*
+var Units = {
+
+  Intern : class extends Unit {
+    constructor() {
+      super(4,1);
+      this._name = 'Intern'; 
+    }
+    
+    act() {
+
+    }
+  },
+  
+  Manager : class extends Unit {
+    constructor()  {
+      super(4,1);
+      this._name = 'Manager';
+    }
+  
+    act() {
+
+      }        
+    },
+    
+  Programmer : class extends Unit {
+    constructor()  {
+      super(4,1);
+      this._name = 'Programmer';
+    }
+  
+    act() {
+
+      }        
+    }
+  } */ 
+    
 }
