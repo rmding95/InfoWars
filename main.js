@@ -162,7 +162,6 @@ class Game {
 }
 
 var HEIGHT = 100;
-var DIMENSION = 7;
 var emptyTop = "300px";
 var emptyLeft = "300px";
 
@@ -314,8 +313,18 @@ var Units = {
 function handleClick() {
     var id = this.id;
     //formulas broken for last column
-    var x = (id % DIMENSION) - 1;
-    var y = Math.floor(id / DIMENSION);
+    var x;
+    if (id % DIMENSION == 0) {
+        x = DIMENSION - 1;
+    } else { 
+        x = (id % DIMENSION) - 1;
+    }
+    var y;
+    if (id == DIMENSION * DIMENSION) {
+        y = DIMENSION - 1;    
+    } else {
+        y = Math.floor(id / DIMENSION);
+    }
     //var x = Math.floor(id / DIMENSION);
     //var y = (id % DIMENSION) - 1;
     console.log(x);
