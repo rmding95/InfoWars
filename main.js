@@ -1,3 +1,5 @@
+"use strict";
+
 class Player {
     constructor(name, money) {
         this._name = name;
@@ -15,9 +17,9 @@ class Player {
 }
 
 class Unit {
-    constructor(health, place) {
+    constructor(health, square) {
         this._health = health;
-        this._place = place;
+        this._square = square;
     }
     
     get health() {
@@ -27,23 +29,45 @@ class Unit {
     reduceHealth(amount) {
         this._health -= amount;   
         if (this._health <= 0) {
-            this.place = undefined; // removes unit from the game    
+            this.square = undefined; // removes unit from the game    
         }
     }
 }
 
-class Place {
-    constructor() {
-            
+class Factory {
+    constructor(square) {
+        this._square = square;        
+    }
+    
+    get square() {
+     return this._square;   
     }
 }
 
-class PM extends Unit {
+class Square {
+    constructor(x, y) {
+        this._x = x;
+        this._y = y;
+    }
+}
+
+class Game {
+    constructor() {
+        this._turn = turn;    
+    }
+    endTurn() {
+        
+    }
+    
+    get turn() {
+        return this._turn;   
+    }
     
 }
 
-
-"use strict";
+class intern extends Unit {
+    
+}
 
 var HEIGHT = 100;
 var DIMENSION = 7;
@@ -78,4 +102,12 @@ function check() {
 
 function remove() {
 	this.classList.remove("highlight");
+}
+
+function populateGrid() {
+    
+}
+
+function startGame() {
+    
 }
