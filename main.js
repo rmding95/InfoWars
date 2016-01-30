@@ -7,6 +7,9 @@ var emptyLeft = "300px";
 var gridList = [];
 var playerMoney = "500";
 var units = ["Intern", "Manager", "Programmer"];
+var currentFactory;
+var buildUnit = [];
+var adjacentStyle = [];
 
 class Player {
     constructor(money, name) {
@@ -164,6 +167,7 @@ var emptyTop = "300px";
 var emptyLeft = "300px";
 
 window.onload = function() {
+    document.getElementById("unitmenu").style.display = "none";
 	makeGrid();
     populateGrid();
 	var tiles = document.querySelectorAll('#grid div');
@@ -209,17 +213,18 @@ function adjacent(square) {
     }
     return squares;
 }
-
+/*
 function adjacementTest(square, distance) {
     var squares =[];
     for (var i = 0; i < distance + 1; i++) {
         for (var j = 0; k < distance - i + 1; j++) {
             if () {
-                squares.push(gridList[j];    
+                squares.push(gridList[j]);    
             }
         }
     }
 }
+*/
 
 /*
 function adjacentTest(square, distance) {
@@ -320,6 +325,7 @@ function handleClick() {
     }
     if (square.getType() == "factory") {
         document.querySelector("#unitmenu").style.display = "initial";
+        currentFactory = square;
     }
     if (square.getType() == "blank") {
         document.querySelector("#unitmenu").style.display = "none";
@@ -342,6 +348,36 @@ function buyUnit() {
     } else {
         console.log("you fucked up");
     }
+    buildUnit.push(unitName);
+    buildUnit.push(unit);
+    var tile = currentFactory;
+    var adjacentTiles = adjacent(tile);
+    adjacentStyle = adjacentTiles;
+    console.log(adjacentTiles);
+    for (var i = 0; i < adjacentTiles.length; i++) {
+        var square = document.getElementById(adjacentTiles[i].getId());
+        square.classList.add("available");
+        square.onclick = addUnit;
+    }
+}
+
+function addUnit() {
+    if (buildUnit[0] == "Intern") {
+        this.innerHTML = "I";
+    }
+    if (buildUnit[0] == "Manager") {
+        this.innerHTML = "M";
+    }
+    if (buildUnit[0] == "Programmer") {
+        this.innerHTML = "P";
+    }
+    for (var i = 0; i < adjacentStyle.length; i++) {
+        var square = document.getElementById(adjacentStyle[i].getId());
+        square.classList.remove("available");
+    }
+    adjacentStyle = [];
+    buildUnit = [];
+    currentFactory = "";
 }
 
 
