@@ -27,10 +27,11 @@ class Player {
 }
 
 class Unit {
-    constructor(health, attack, square) {
+    constructor(health, attack, movement) {
         this._health = health;
         this._attack = attack;
-        this._square = square;
+        this._movement = movement;
+        this._type = "unit";
     }
     
     get health() {
@@ -41,6 +42,9 @@ class Unit {
         return this._attack;    
     }
     
+    get movement() {
+        return this._movement;   
+    }
     reduceHealth(amount) {
         this._health -= amount;   
         if (this._health <= 0) {
@@ -51,34 +55,39 @@ class Unit {
     engage(target) {
         target.reduceHealth(this._attack);
     }
+    
+    move() {
+        
+    }
 }
 
-/*
+
 class Intern extends Unit {
     constructor() {
-        super(4, 1);
+        super(4, 1, 2);
         this._name = 'Intern';
     }
 }
 
 class Manager extends Unit {
     constructor() {
-        super(4, 1)
+        super(4, 1, 2)
         this._name = 'Manager';
     }
 }
 
 class Programmer extends Unit {
     constructor() {
-        super(4, 1)
+        super(4, 1, 2)
         this._name = 'Programmer';
     }
 }
-*/
+
 
 class Factory {
     constructor(square) {
-        this._square = square;        
+        this._square = square;
+        this._type = "factory";
     }
     
     get square() {
@@ -252,6 +261,10 @@ function handleClick() {
 
     }
     if (square.getType() == "blank") {
+        
+    }
+    
+    if (square.getType() == "unit") {
         
     }
 }
