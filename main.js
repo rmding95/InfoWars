@@ -1,5 +1,11 @@
 "use strict";
 
+var HEIGHT = 100;
+var DIMENSION = 7;
+var emptyTop = "300px";
+var emptyLeft = "300px";
+var gridList = [];
+
 class Player {
     constructor(name, money) {
         this._name = name;
@@ -17,9 +23,10 @@ class Player {
 }
 
 class Unit {
-    constructor(health, square) {
+    constructor(health, place, attack) {
         this._health = health;
-        this._square = square;
+        this._place = place;
+        this._attack = attack;
     }
     
     get health() {
@@ -41,13 +48,24 @@ class Factory {
     
     get square() {
      return this._square;   
-    }
-}
 
 class Square {
     constructor(x, y) {
         this._x = x;
         this._y = y;
+    }
+
+    getId() {
+        return (x * DIMENSION) + (y + 1);
+    }
+
+    getX() {
+        return x;
+    }
+
+    getY() {
+        return y;
+
     }
 }
 
@@ -76,6 +94,7 @@ var emptyLeft = "300px";
 
 window.onload = function() {
 	makeGrid();
+    populateGrid();
 	var tiles = document.querySelectorAll('#grid div');
 		for (var i = 0; i < tiles.length; i++) {
 			tiles[i].onmouseover = check;
@@ -92,6 +111,7 @@ function makeGrid() {
 			tile.style.backgroundPosition = - left + "px " + - top + "px";
 			tile.style.top = top + "px";
 			tile.style.left = left + "px";
+            tile.id = i;
 			document.getElementById("grid").appendChild(tile);
 		}
 }
@@ -110,4 +130,17 @@ function populateGrid() {
 
 function startGame() {
     
+//sets up initial game state, both players get factories in the corner
+function populateGrid() {
+    for (var i = 0; i < DIMENSION; i++) {
+        for (var j = 0; j < DIMENSION; j++) {
+            var square = new Square(i, j);
+            gridList.push(square);
+            //console.log(gridList);
+        }
+    }
+    for (var i = 0; i < gridList.length; i++) {
+        console.log(gridList[i].x);
+        //if (gridList[i])
+    }
 }
