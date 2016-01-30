@@ -47,7 +47,9 @@ class Factory {
     }
     
     get square() {
-     return this._square;   
+     return this._square;
+    }
+}   
 
 class Square {
     constructor(x, y) {
@@ -56,15 +58,15 @@ class Square {
     }
 
     getId() {
-        return (x * DIMENSION) + (y + 1);
+        return (this._x * DIMENSION) + (this._y + 1);
     }
 
     getX() {
-        return x;
+        return this._x;
     }
 
     getY() {
-        return y;
+        return this._y;
 
     }
 }
@@ -129,6 +131,8 @@ function populateGrid() {
 }
 
 function startGame() {
+
+}
     
 //sets up initial game state, both players get factories in the corner
 function populateGrid() {
@@ -140,7 +144,12 @@ function populateGrid() {
         }
     }
     for (var i = 0; i < gridList.length; i++) {
-        console.log(gridList[i].x);
-        //if (gridList[i])
+        if ((gridList[i].getX() == 0 && gridList[i].getY() == 0) || (gridList[i].getX() == 6 && gridList[i].getY() == 0) || (gridList[i].getX() == 0 && gridList[i].getY() == 6) ||
+            (gridList[i].getX() == 6 && gridList[i].getY() == 6)) {
+            var square = gridList[i];
+            var id = square.getId();
+            var tile = document.getElementById(id);
+            tile.innerHTML = "F";
+        }
     }
 }
