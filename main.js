@@ -175,10 +175,10 @@ function handleClick() {
         }
     }
     if (square.getType() == "factory") {
-
+        document.querySelector("#unitmenu").style.display = "initial";
     }
     if (square.getType() == "blank") {
-        
+        document.querySelector("#unitmenu").style.display = "none";
     }
 }
 
