@@ -5,6 +5,7 @@ var DIMENSION = 7;
 var emptyTop = "300px";
 var emptyLeft = "300px";
 var gridList = [];
+var playerMoney = "500";
 
 class Player {
     constructor(money, name) {
@@ -35,6 +36,7 @@ class Unit {
         this._canAttack = true;
         this._canMove = true;
         this._type = "unit";
+        this._own = true;
     }
     
     get health() {
@@ -60,6 +62,10 @@ class Unit {
     get canMove() {
         return this._canMove;    
     }
+    
+    get own() {
+        return this._own;    
+    }
     reduceHealth(amount) {
         //this._health -= amount;   
         //if (this._health <= 0) {
@@ -82,14 +88,14 @@ class Intern extends Unit {
 
 class Programmer extends Unit {
     constructor() {
-        super(6, 2, 2 400)
+        super(6, 2, 2, 400);
         this._name = 'Programmer';
     }
 }
 
 class Manager extends Unit {
     constructor() {
-        super(8, 3, 3, 600)
+        super(8, 3, 3, 650)
         this._name = 'Manager';
     }
 }
@@ -192,7 +198,16 @@ function remove() {
 function startGame() {
 
 }
-    
+
+function adjacent(square) {
+    var squares = [];
+    for (var i = 0; i < gridList.length; i++) {
+        if (gridList[i].getX() == square.getX() + 1 && gridList[i].getY() == square.getY() || gridList[i].getX() == square.getX() - 1 && gridList[i].getY() == square.getY() || gridList[i].getY() == square.getY() + 1 && gridList[i].getX() == square.getX() || gridList[i].getY() == square.getY() - 1 && gridList[i].getX() == square.getX()) {
+            squares.push(gridList[i]);
+        }
+    }
+    return squares;
+}
 //sets up initial game state, both players get factories in the corner
 function populateGrid() {
     for (var i = 0; i < DIMENSION; i++) {
@@ -257,8 +272,10 @@ var Units = {
 function handleClick() {
     var id = this.id;
     //formulas broken for last column
-    var x = Math.floor(id / DIMENSION);
-    var y = (id % DIMENSION) - 1;
+    var x = (id % DIMENSION) - 1;
+    var y = Math.floor(id / DIMENSION);
+    //var x = Math.floor(id / DIMENSION);
+    //var y = (id % DIMENSION) - 1;
     console.log(x);
     console.log(y);
     var square;
