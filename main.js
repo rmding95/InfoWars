@@ -52,9 +52,10 @@ class Factory {
 }   
 
 class Square {
-    constructor(x, y) {
+    constructor(x, y, type) {
         this._x = x;
         this._y = y;
+        this._type = "blank";
     }
 
     getId() {
@@ -67,7 +68,15 @@ class Square {
 
     getY() {
         return this._y;
+    }
 
+    getType() {
+        return this._type;
+    }
+
+    //blank, factory, unit
+    setType(type) {
+        this._type = type;
     }
 }
 
@@ -101,6 +110,7 @@ window.onload = function() {
 		for (var i = 0; i < tiles.length; i++) {
 			tiles[i].onmouseover = check;
 			tiles[i].onmouseout = remove;
+            tiles[i].onclick = handleClick;
 		}
 }
 
@@ -126,10 +136,6 @@ function remove() {
 	this.classList.remove("highlight");
 }
 
-function populateGrid() {
-    
-}
-
 function startGame() {
 
 }
@@ -147,9 +153,32 @@ function populateGrid() {
         if ((gridList[i].getX() == 0 && gridList[i].getY() == 0) || (gridList[i].getX() == 6 && gridList[i].getY() == 0) || (gridList[i].getX() == 0 && gridList[i].getY() == 6) ||
             (gridList[i].getX() == 6 && gridList[i].getY() == 6)) {
             var square = gridList[i];
+            square.setType("factory");
             var id = square.getId();
             var tile = document.getElementById(id);
             tile.innerHTML = "F";
         }
     }
 }
+
+function handleClick() {
+    var id = this.id;
+    //formulas broken for last column
+    var x = Math.floor(id / DIMENSION);
+    var y = (id % DIMENSION) - 1;
+    console.log(x);
+    console.log(y);
+    var square;
+    for (var i = 0; i < gridList.length; i++) {
+        if (gridList[i].getX() == x && gridList[i].getY() == y) {
+            square = gridList[i];
+        }
+    }
+    if (square.getType() == "factory") {
+
+    }
+    if (square.getType() == "blank") {
+        
+    }
+}
+
