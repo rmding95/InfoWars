@@ -231,9 +231,9 @@ var Units = {
 
       }        
     }
-  } */ 
+  } 
     
-}
+}*/
 
 function handleClick() {
     var id = this.id;
@@ -254,6 +254,10 @@ function handleClick() {
     if (square.getType() == "blank") {
         document.querySelector("#unitmenu").style.display = "none";
     }
+}
+
+function buyUnit() {
+    
 }
 
 
