@@ -228,7 +228,6 @@ function adjacementTest(square, distance) {
     }
 }
 */
->>>>>>> ec5f3e949e8ba4ddcfffb3287c630b7d82fd96b7
 
 /*
 function adjacentTest(square, distance) {
