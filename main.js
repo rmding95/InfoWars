@@ -6,6 +6,7 @@ var emptyTop = "300px";
 var emptyLeft = "300px";
 var gridList = [];
 var playerMoney = "500";
+var units = ["Intern", "Manager", "Programmer"];
 
 class Player {
     constructor(money, name) {
@@ -253,6 +254,13 @@ function populateGrid() {
             tile.innerHTML = "F";
         }
     }
+    var list = document.getElementById("menu");
+    for (var i = 0; i < units.length; i++) {
+        var item = document.createElement("li");
+        item.innerHTML = units[i];
+        list.appendChild(item);
+        item.onclick = buyUnit;
+    }
 }
 
 
@@ -323,7 +331,17 @@ function handleClick() {
 }
 
 function buyUnit() {
-    
+    var unitName = this.innerHTML;
+    var unit;
+    if (unitName == "Intern") {
+        unit = new Intern();
+    } else if (unitName == "Manager") {
+        unit = new Manager();
+    } else if (unitName == "Programmer") {
+        unit = new Programmer();
+    } else {
+        console.log("you fucked up");
+    }
 }
 
 
