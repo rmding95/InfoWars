@@ -208,6 +208,25 @@ function adjacent(square) {
     }
     return squares;
 }
+
+function adjacementTest(square, distance) {
+    
+}
+
+/*
+function adjacentTest(square, distance) {
+    var squares = [];
+    for (var i = 0; i < gridList.length; i++) {
+        
+    }
+    for (var j = 0; i < gridList.length; i++) {
+        if (gridList[i].getX() == square.getX() + 1 && gridList[i].getY() == square.getY() || gridList[i].getX() == square.getX() - 1 && gridList[i].getY() == square.getY() || gridList[i].getY() == square.getY() + 1 && gridList[i].getX() == square.getX() || gridList[i].getY() == square.getY() - 1 && gridList[i].getX() == square.getX()) {
+            squares.push(gridList[j]);
+        }
+    }
+    return squares;
+}
+*/
 //sets up initial game state, both players get factories in the corner
 function populateGrid() {
     for (var i = 0; i < DIMENSION; i++) {
