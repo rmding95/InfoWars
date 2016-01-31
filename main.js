@@ -42,6 +42,8 @@ class Unit {
         this._canMove = true;
         this._type = "unit";
         this._own = true;
+        this._x;
+        this._y;
     }
     
     get health() {
@@ -71,6 +73,16 @@ class Unit {
     get own() {
         return this._own;    
     }
+
+    setLocation(x, y) {
+        this._x = x;
+        this._y = y;
+    }
+
+    getLocation() {
+        return new Square(this._x, this._y);
+    }
+
     reduceHealth(amount) {
         //this._health -= amount;   
         //if (this._health <= 0) {
@@ -398,6 +410,7 @@ function addUnit() {
     if (buildUnit[0] == "Programmer") {
         this.innerHTML = "P";
     }
+    var unit = buildUnit[1];
     for (var i = 0; i < adjacentStyle.length; i++) {
         var square = document.getElementById(adjacentStyle[i].getId());
         square.classList.remove("available");
