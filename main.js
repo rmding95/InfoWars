@@ -10,6 +10,7 @@ var units = ["Intern", "Manager", "Programmer"];
 var currentFactory;
 var buildUnit = [];
 var adjacentStyle = [];
+var money = 1000;
 
 class Player {
     constructor(money, name) {
