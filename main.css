@@ -2,31 +2,35 @@
 	position: absolute;
 	height: 90px;
 	width: 90px;
-	border: 5px solid black;
+	border: 4px solid #524a52;
 	font-size: 40pt;
 }
 
 .highlight {
 	cursor: pointer;
-	border: 5px solid red !important;
-	color: red;
+	border: 4px solid #c5627b !important;
+	color: #c5627b;
 }
 
 #grid {
 	position: relative;
 	height: 400px;
-	width: 400px;
+	width: 675px;
 	margin: auto;
 }
 
 body {
-	font-family: cursive;
+	font-family: Tahoma;
 	font-size: 14pt;
 	text-align: center;
+    color:#524a52
 }
 
 #unitmenu {
 	float: left;
+    border: 2px solid #f6b441;
+    width: 200px;
+    height: 110px;
 }
 
 #menu {
@@ -38,5 +42,9 @@ body {
 }
 
 .available {
-	background-color: blue;
+	background-color: #83a4de;
+}
+
+#menu li:hover {
+	color: #ee8341;
 }
