@@ -334,8 +334,20 @@ function handleClick() {
     var y;
     if (id == DIMENSION * DIMENSION) {
         y = DIMENSION - 1;    
+    } else if (id == DIMENSION) {
+        y = 0;
+    } else if (id == DIMENSION * 2) {
+        y = 1;    
+    } else if (id == DIMENSION * 3) {
+        y = 2;    
+    } else if (id == DIMENSION * 4) {
+        y = 3;    
+    } else if (id == DIMENSION * 5) {
+        y = 4;   
+    } else if (id == DIMENSION *6) {
+        y = 5;    
     } else {
-        y = Math.floor(id / DIMENSION);
+        y = Math.floor(id / DIMENSION);        
     }
     //var x = Math.floor(id / DIMENSION);
     //var y = (id % DIMENSION) - 1;
