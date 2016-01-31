@@ -10,6 +10,7 @@ var units = ["Intern", "Manager", "Programmer"];
 var currentFactory;
 var buildUnit = [];
 var adjacentStyle = [];
+var unitMoved;
 
 class Player {
     constructor(money, name) {
@@ -323,6 +324,8 @@ var Units = {
 }*/
 
 function handleClick() {
+    var div = this;
+    console.log(div);
     var id = this.id;
     //formulas broken for last column
     var x;
@@ -366,10 +369,33 @@ function handleClick() {
     if (square.getType() == "blank") {
         document.querySelector("#unitmenu").style.display = "none";
     }
-    
-    if (square.getType() == "unit") {
-        
+    console.log(this.innerHTML);
+    if (this.innerHTML == "P" || this.innerHTML == "M" || this.innerHTML == "I") {
+        var unitName = this.innerHTML;
+        var unit;
+        if (unitName == "I") {
+            unitMoved = "I";
+            unit = new Intern();
+        } else if(unitName == "M") {
+            unitMoved = "M";
+            unit = new Manager();
+        } else if (unitName == "P") {
+            unitMoved = "P";
+            unit = new Programmer();
+        }
+        var adj = adjacent(square);
+        for (var i = 0; i < adj.length; i++) {
+            if (adj[i].getType() == "blank") {
+                var div = document.getElementById(adj[i].getId());
+                div.classList.add("available");
+                div.onclick = moveUnit;
+            }
+        }
     }
+}
+
+function moveUnit() {
+    this.innerHTML = unitMoved;
 }
 
 function buyUnit() {
@@ -401,22 +427,60 @@ function buyUnit() {
 
 function addUnit() {
     if (buildUnit[0] == "Intern") {
-        this.innerHTML = "I";
+        //this.innerHTML = "I";
+        var what = 'url(internSprite.png)';
+        console.log(what);
+        this.style.backgroundImage = what;
     }
     if (buildUnit[0] == "Manager") {
-        this.innerHTML = "M";
+        //this.innerHTML = "M";
+        this.style.backgroundImage = 'url(ProjectManager.png)';
     }
     if (buildUnit[0] == "Programmer") {
-        this.innerHTML = "P";
+        //this.innerHTML = "P";
+        this.style.backgroundImage = 'url(ProgrammerSprite.png)';
+    }
+    var id = this.id;
+    //formulas broken for last column
+    var x;
+    if (id % DIMENSION == 0) {
+        x = DIMENSION - 1;
+    } else { 
+        x = (id % DIMENSION) - 1;
+    }
+    var y;
+    if (id == DIMENSION * DIMENSION) {
+        y = DIMENSION - 1;    
+    } else if (id == DIMENSION) {
+        y = 0;
+    } else if (id == DIMENSION * 2) {
+        y = 1;    
+    } else if (id == DIMENSION * 3) {
+        y = 2;    
+    } else if (id == DIMENSION * 4) {
+        y = 3;    
+    } else if (id == DIMENSION * 5) {
+        y = 4;   
+    } else if (id == DIMENSION *6) {
+        y = 5;    
+    } else {
+        y = Math.floor(id / DIMENSION);        
     }
     var unit = buildUnit[1];
+    //unit.setLocation(x, y);
     for (var i = 0; i < adjacentStyle.length; i++) {
         var square = document.getElementById(adjacentStyle[i].getId());
         square.classList.remove("available");
     }
+    for (var i = 0; i < gridList.length; i++) {
+        if (gridList[i].getX() == x && gridList[i].getY() == y) {
+            gridList[i].setType("unit");
+        }
+    }
     adjacentStyle = [];
     buildUnit = [];
     currentFactory = "";
+    this.onclick = handleClick;
 }
 
 
