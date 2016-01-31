@@ -380,8 +380,10 @@ function buyUnit() {
     console.log(adjacentTiles);
     for (var i = 0; i < adjacentTiles.length; i++) {
         var square = document.getElementById(adjacentTiles[i].getId());
-        square.classList.add("available");
-        square.onclick = addUnit;
+        if (adjacentTiles[i].getType() == "blank") {
+            square.classList.add("available");
+            square.onclick = addUnit;
+        }
     }
 }
 
